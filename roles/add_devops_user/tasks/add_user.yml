@@ -18,7 +18,7 @@
      lineinfile:
            dest=/etc/ssh/sshd_config
            regexp='^PasswordAuthentication'
-           line="PasswordAuthentication no"
+           line="PasswordAuthentication yes"
            state=present
            backup=yes
 
@@ -26,7 +26,7 @@
      lineinfile:
            dest=/etc/ssh/sshd_config
            regexp='^PermitRootLogin'
-           line="PermitRootLogin no"
+           line="PermitRootLogin yes"
            state=present
            backup=yes
            
