@@ -7,6 +7,7 @@ permissions:
   contents: read
 jobs:
   scan-pull-request:
+    if: github.ref_name == 'Dev' 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
