@@ -1,0 +1,45 @@
+name: "Pull Request"
+on:
+  pull_request_target:
+    types: [ opened, synchronize ]
+permissions:
+  pull-requests: write
+  contents: read
+jobs:
+  scan-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+# - name: Auto-Merge Pull Request
+#   # You may pin to the exact commit or the version.
+#   # uses: reitermarkus/automerge@e0cf02bcf5cbb9f9e9b359cc0ad3d9319bd5f427
+#   uses: reitermarkus/automerge@v2.6.0
+#   with:
+#     # A GitHub Token other than the default `GITHUB_TOKEN` needs to be specified in order to be able to trigger other workflows.
+
+#     token: # default is ${{ github.token }}
+#     # Specify which merge method to use. By default, will select the first one available in this order: `merge`, `squash`, `rebase`
+
+#     merge-method: merge
+
+#     # Comma-separated list of labels that are required to be applied to a pull request for it to be merged automatically.
+
+#     required-labels: approved
+#     # Try merging the specified pull request automatically. For example, you can pass an input from a `workflow_dispatch` event.
+
+#     pull-request: # optional
+#     # Comma-separated list of required author associations for the pull request author. (By default, pull requests by any author are allowed.)
+
+#     pull-request-author-associations: # optional
+#     # Try merging the pull request associated with the specified review ID automatically. For example, you can pass an input from a `workflow_dispatch` event. The `pull-request` input is also required if this is specified.
+
+#     review: # optional
+#     # Comma-separated list of required author associations for the review author. (By default, pull requests reviewed by `OWNER`s, `MEMBER`s and `COLLABORATOR`s are allowed.)
+
+#     review-author-associations: # optional, default is OWNER,MEMBER,COLLABORATOR
+#     # If set to `true`, will not actually merge pull requests but still perform all other checks.
+
+#     dry-run: /
