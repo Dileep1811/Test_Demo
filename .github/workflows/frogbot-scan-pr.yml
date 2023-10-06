@@ -1,13 +1,12 @@
 name: "Pull Request"
 on:
-  pull_request_target:
+  pull_request:
     types: [ opened, synchronize ]
 permissions:
   pull-requests: write
   contents: read
 jobs:
   scan-pull-request-Dev:
-    if: github.ref_name == 'Dev' 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,7 +14,6 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
 
   scan-pull-request-QA:
-    if: github.ref_name == 'QA' 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
