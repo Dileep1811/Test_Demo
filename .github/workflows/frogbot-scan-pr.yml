@@ -1,26 +1,31 @@
 name: "Pull Request"
 on:
-  pull_request_target:
-    types: [ opened, synchronize ]
-permissions:
-  pull-requests: write
-  contents: read
+  pull_request:
+    branches:
+      - Dev
+      - QA
+    # types: [ opened, synchronize ]
+    types:
+      - closed
+# permissions:
+#   pull-requests: write
+#   contents: read
 jobs:
   scan-pull-request-Dev:
-    if: github.ref_name == 'Dev' 
+    if: github.event.pull_request.base.ref == 'Dev'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
+        # with:
+        #   ref: ${{ github.event.pull_request.head.sha }}
 
   scan-pull-request-QA:
-    if: github.ref_name == 'QA' 
+    if: github.event.pull_request.base.ref == 'QA'   
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
+        # with:
+        #   ref: ${{ github.event.pull_request.head.sha }}
 
 # - name: Auto-Merge Pull Request
 #   # You may pin to the exact commit or the version.
