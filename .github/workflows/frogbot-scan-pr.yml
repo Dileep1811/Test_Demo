@@ -20,7 +20,7 @@ jobs:
         #   ref: ${{ github.event.pull_request.head.sha }}
 
   scan-pull-request-QA:
-    if: github.event.pull_request.base.ref == 'QA'   
+    # if: github.event.pull_request.base.ref == 'QA'   
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
