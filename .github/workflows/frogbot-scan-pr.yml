@@ -75,6 +75,6 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Run CMD file
-        shell: cmd
-        run: cmd /c D:/file.cmd
+        # shell: cmd
+        run: cmd /c "D:/file.cmd"
 
