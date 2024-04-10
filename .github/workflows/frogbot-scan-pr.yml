@@ -76,5 +76,5 @@ jobs:
       
       - name: Run CMD file
         # shell: cmd
-        run: D:/file.cmd
+        run: file.cmd
 
