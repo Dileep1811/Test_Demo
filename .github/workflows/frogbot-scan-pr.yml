@@ -76,5 +76,5 @@ jobs:
       
       - name: Run CMD file
         # shell: cmd
-        run: file.cmd
+        run: cmd /c file.cmd
 
